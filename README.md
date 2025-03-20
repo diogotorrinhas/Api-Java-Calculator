@@ -59,11 +59,11 @@ Kafka will be available at localhost:9092
 
 ## 3. Run the Application
 ### Manually
-Go to the calculator directory and run with maven
+Go to the `calculator` directory and run with maven
 ```bash
 mvn spring-boot:run
 ```
-Go to the rest directory and run with maven
+Go to the `rest` directory and run with maven
 ```bash
 mvn spring-boot:run
 ```
