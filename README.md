@@ -34,7 +34,7 @@ This project consists of two modules:
 To run this project, you need the following:
 
 - Java 11 or later
-- Maven or Gradle (depending on your preference)
+- Maven
 - Docker and Docker Compose
 - Apache Kafka (configured via Docker)
 
