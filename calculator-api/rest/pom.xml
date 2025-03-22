@@ -10,25 +10,48 @@
     <artifactId>rest</artifactId>
 
     <dependencies>
+        <!-- Spring Boot Web Starter -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+
+        <!-- Spring Kafka -->
         <dependency>
             <groupId>org.springframework.kafka</groupId>
             <artifactId>spring-kafka</artifactId>
         </dependency>
+
+        <!-- Calculator Module Dependency -->
         <dependency>
             <groupId>com.example</groupId>
             <artifactId>calculator</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
 
-        <!-- ✅ Add JUnit 5 support -->
+        <!-- Spring Boot Starter Test -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <!-- Spring Boot Maven Plugin -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>3.2.0</version> <!-- Use the correct version -->
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal> <!-- Ensures the JAR is executable -->
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>

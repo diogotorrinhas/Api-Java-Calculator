@@ -1,0 +1,56 @@
+version: '3'
+services:
+  # Zookeeper service
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.3.0
+    container_name: zookeeper
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    ports:
+      - "2181:2181"
+  
+  # Kafka service
+  kafka:
+    image: confluentinc/cp-kafka:7.3.0
+    container_name: kafka
+    depends_on:
+      - zookeeper
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092  # Update to use 'kafka' instead of 'localhost'
+      KAFKA_LISTENER_SECURITY_PROTOCOL: PLAINTEXT  # Default listener protocol (plaintext)
+      KAFKA_LISTENER_PORT: 9092  # Default port
+      KAFKA_LISTENER_NAMES: PLAINTEXT
+      KAFKA_LISTENER_PLAINTEXT_PORT: 9092
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+    ports:
+      - "9092:9092"
+  
+  # Calculator service (build from the local Dockerfile)
+  calculator:
+    build:
+      context: ./calculator
+    container_name: calculator
+    depends_on:
+      - kafka
+    environment:
+      - SPRING_KAFKA_BOOTSTRAP_SERVERS=kafka:9092  # Connect to Kafka using the internal Docker network
+    ports:
+      - "8081:8081"  # Exposing the REST API port of the calculator service
+
+  # Rest service (build from the local Dockerfile)
+  rest:
+    build:
+      context: ./rest
+    container_name: rest
+    depends_on:
+      - kafka
+      - calculator
+    environment:
+      - SPRING_KAFKA_BOOTSTRAP_SERVERS=kafka:9092  # Connect to Kafka using the internal Docker network
+    ports:
+      - "8080:8080"  # Exposing the REST API port of the rest service
