@@ -23,5 +23,12 @@
             <artifactId>calculator</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+
+        <!-- ✅ Add JUnit 5 support -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 </project>
