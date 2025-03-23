@@ -26,7 +26,6 @@ This project consists of two modules:
 
 - **Spring Boot**: The project uses Spring Boot for building the API and integrating with Kafka.
 - **Apache Kafka**: A distributed event streaming platform for communication between services.
-- **BigDecimal**: For handling arbitrary precision decimal numbers.
 - **Docker & Docker Compose**: For containerization and orchestration of the services.
 
 ## Prerequisites
@@ -47,30 +46,23 @@ To run this project, you need the following:
 mvn clean install
 ```
 
+## 2. Run Tests
 
-## 2. Set Up Kafka
-
-The project uses Docker to spin up Kafka and Zookeeper. Follow these steps to start the Kafka environment.
+Run tests in all modules.
 
 ```bash
-docker-compose up -d
+mvn test
 ```
-Kafka will be available at localhost:9092
 
-## 3. Run the Application
-### Manually
-Go to the `calculator` directory and run with maven
-```bash
-mvn spring-boot:run
-```
-Go to the `rest` directory and run with maven
-```bash
-mvn spring-boot:run
-```
-### With Docker
-Still have to do
+## 2. Run the Application
 
-## 4. Access the REST API
+The project uses Docker to run all the modules and kafka.
+
+```bash
+docker-compose up --build
+```
+
+## 3. Access the REST API
 
 Once the application is up and running, the RESTful API can be accessed at the following endpoints:
 
