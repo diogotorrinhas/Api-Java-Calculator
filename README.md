@@ -37,24 +37,8 @@ To run this project, you need the following:
 - Docker and Docker Compose
 - Apache Kafka (configured via Docker)
 
-## Setup and Installation
 
-## 1. Build the Project
-
-### Using Maven:
-```bash
-mvn clean install
-```
-
-## 2. Run Tests
-
-Run tests in all modules.
-
-```bash
-mvn test
-```
-
-## 2. Run the Application
+## 1. Run the Application
 
 The project uses Docker to run all the modules and kafka.
 
@@ -62,7 +46,7 @@ The project uses Docker to run all the modules and kafka.
 docker-compose up --build
 ```
 
-## 3. Access the REST API
+## 2. Access the REST API
 
 Once the application is up and running, the RESTful API can be accessed at the following endpoints:
 
