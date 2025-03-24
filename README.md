@@ -56,7 +56,7 @@ Example request body:
 
 ```json
 {
-  "operation": "sum",
+  "operation": "add",
   "a": "10",
   "b": "5"
 }
