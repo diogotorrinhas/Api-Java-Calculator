@@ -76,6 +76,7 @@ Example request body:
   "message": "Calculation request sent to Kafka: add:5:10"
 }
 ```
+### API Logs
 
-
+<img width="1433" alt="Screenshot 2025-03-22 at 04 01 22" src="https://github.com/user-attachments/assets/264a800b-fb88-410f-ba31-a324b2441e88" />
 
